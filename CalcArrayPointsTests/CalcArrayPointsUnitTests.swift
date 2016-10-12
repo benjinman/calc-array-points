@@ -129,15 +129,16 @@ class CalcArrayPointsUnitTests: XCTestCase {
         let xNilEntryDict : Dictionary<String, Double>? = ["y": 1.0]
         let yNilEntryDict : Dictionary<String, Double>? = ["y": 1.0]
         
-        XCTAssertNoThrow(add(p1: nilEntryDict, p2: dictionaryDoubleTest2))
         XCTAssertNoThrow(add(p1: xNilEntryDict, p2: dictionaryDoubleTest2))
+        XCTAssertNoThrow(add(p1: nilEntryDict, p2: dictionaryDoubleTest2))
+        
         XCTAssertNoThrow(add(p1: yNilEntryDict, p2: dictionaryDoubleTest2))
-        XCTAssertNoThrow(add(p1: xNilEntryDict, p2: yNilEntryDict))
+        XCTAssertNoThrow(add(p1: xNilEntryDict, p2: yNilEntryDict!))
         
         XCTAssertNoThrow(subtract(p1: nilEntryDict, p2: dictionaryDoubleTest2))
         XCTAssertNoThrow(subtract(p1: xNilEntryDict, p2: dictionaryDoubleTest2))
         XCTAssertNoThrow(subtract(p1: yNilEntryDict, p2: dictionaryDoubleTest2))
-        XCTAssertNoThrow(subtract(p1: xNilEntryDict, p2: yNilEntryDict))
+        XCTAssertNoThrow(subtract(p1: xNilEntryDict, p2: yNilEntryDict!))
     }
     
     /**

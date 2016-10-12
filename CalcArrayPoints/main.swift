@@ -102,22 +102,20 @@ func subtract(_ points: (Int, Int)...) -> (Int, Int) {
 
 // Dictionaries
 
-func add(p1 : [String : Int], p2 : [String : Int]) -> [String : Int]? {
+func add(p1 : [String : Int]!, p2 : [String : Int]!) -> [String : Int]? {
     var result = [
-        "x" : Int(),
-        "y" : Int()
+        "x" : 0,
+        "y" : 0
     ]
-    if (p1["x"] != nil && p1["y"] != nil && p2["x"] != nil && p2["y"] != nil) {
-        result["x"] = p1["x"]! + p2["x"]!;
-        result["y"] = p1["y"]! + p2["y"]!;
-    }
+    result["x"] = p1["x"]! + p2["x"]!;
+    result["y"] = p1["y"]! + p2["y"]!;
     return result
 }
 
-func subtract(p1 : [String : Int], p2 : [String : Int]) -> [String : Int]? {
+func subtract(p1 : [String : Int]!, p2 : [String : Int]!) -> [String : Int]? {
     var result = [
-        "x" : Int(),
-        "y" : Int()
+        "x" : 0,
+        "y" : 0
     ]
     result["x"] = p1["x"]! - p2["x"]!;
     result["y"] = p1["y"]! - p2["y"]!;
@@ -126,20 +124,21 @@ func subtract(p1 : [String : Int], p2 : [String : Int]) -> [String : Int]? {
 
 // Doubles
 
-func add(p1 : [String : Double], p2 : [String : Double]) -> [String : Double]? {
+func add(p1 : [String : Double]!, p2 : [String : Double]!) -> [String : Double]? {
     var result = [
-        "x" : Double(),
-        "y" : Double()
+        "x" : 0.0,
+        "y" : 0.0
     ]
     result["x"] = p1["x"]! + p2["x"]!;
     result["y"] = p1["y"]! + p2["y"]!;
     return result
 }
 
-func subtract(p1 : [String : Double], p2 : [String : Double]) -> [String : Double]? {
+
+func subtract(p1 : [String : Double]!, p2 : [String : Double]!) -> [String : Double]? {
     var result = [
-        "x" : Double(),
-        "y" : Double()
+        "x" : 0.0,
+        "y" : 0.0
     ]
     result["x"] = p1["x"]! - p2["x"]!;
     result["y"] = p1["y"]! - p2["y"]!;
