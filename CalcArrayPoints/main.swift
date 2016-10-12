@@ -8,76 +8,140 @@
 
 import Foundation
 
-func add(num1 : Int, num2 : Int) -> Int {
-    return num1 + num2
+// Basic Calculations
+
+func add(left : Int, right : Int) -> Int {
+    return left + right
 }
 
-func add(nums: [Int]) -> Int {
+func subtract(left : Int, right : Int) -> Int {
+    return left - right
+}
+
+func multiply(left : Int, right : Int) -> Int {
+    return left * right
+}
+
+func divide(left : Int, right : Int) -> Int {
+    return left / right
+}
+
+func mathOperation(left : Int, right : Int, operation: (Int, Int) -> Int) -> Int {
+    return operation(left, right);
+}
+
+// Array Fun
+
+func add(array: [Int]) -> Int {
     var sum = 0;
-    for num in nums {
+    for num in array {
         sum += num;
     }
     return sum;
 }
 
-func subtract(num1 : Int, num2 : Int) -> Int {
-    return num1 - num2
-}
-
-func multiply(num1 : Int, num2 : Int) -> Int {
-    return num1 * num2
-}
-
-func multiply(nums: [Int]) -> Int {
-    var product = 0;
-    for num in nums {
+func multiply(array: [Int]) -> Int {
+    var product = 1;
+    for num in array {
         product *= num;
     }
     return product;
 }
 
-func divide(num1 : Int, num2 : Int) -> Int {
-    return num1 / num2
+func count(array: [Int]) -> Int {
+    return array.count;
 }
 
-func count(nums: [Int]) -> Int {
-    return nums.count;
-}
-
-func average(nums: [Int]) -> Int {
+func average(array: [Int]) -> Int {
     var sum = 0;
-    for num in nums {
+    for num in array {
         sum += num;
     }
-    return sum / nums.count;
+    return sum / array.count;
 }
 
-func calc(num1 : Int, num2 : Int, op: (Int, Int) -> Int) -> Int {
-    return op(num1, num2);
+func reduce(array: [Int], operation: ([Int]) -> Int) -> Int {
+    return operation(array);
 }
 
-func calc(nums: [Int], op: ([Int]) -> Int) -> Int {
-    return op(nums);
-}
+// Points
 
-func addPoints(point1 : (Int, Int), point2 : (Int, Int)) -> (Int, Int) {
+func add(p1 : (Int, Int), p2 : (Int, Int)) -> (Int, Int) {
     var result : (x: Int, y: Int);
-    result.x = point1.0 + point2.0;
-    result.y = point1.1 + point2.1;
+    result.x = add(left: p1.0, right: p2.0);
+    result.y = add(left: p1.1, right: p2.1);
     return result;
 }
 
-func subtractPoints(point1 : (Int, Int), point2 : (Int, Int)) -> (Int, Int) {
+func subtract(p1 : (Int, Int), p2 : (Int, Int)) -> (Int, Int) {
     var result : (x: Int, y: Int);
-    result.x = point1.0 - point2.0;
-    result.y = point1.1 - point2.1;
+    result.x = subtract(left: p1.0, right: p2.0);
+    result.y = subtract(left: p1.1, right: p2.1);
     return result;
 }
 
-var point = [
-    "x": Int(),
-    "y": Int(),
-]
+// Non-two-arity handling
 
-let response = readLine(strippingNewline: true)!;
-let opertr = String.init(response)!;
+func add(_ points: (Int, Int)...) -> (Int, Int) {
+    var result : (x: Int, y: Int) = (0, 0);
+    for point in points {
+        result.x += point.0;
+        result.y += point.1;
+    }
+    return result;
+}
+
+func subtract(_ points: (Int, Int)...) -> (Int, Int) {
+    var result : (x: Int, y: Int) = (0, 0);
+    for point in points {
+        result.x -= point.0;
+        result.y -= point.1;
+    }
+    return result;
+}
+
+// Dictionaries
+
+func add(p1 : [String : Int], p2 : [String : Int]) -> [String : Int]? {
+    var result = [
+        "x" : Int(),
+        "y" : Int()
+    ]
+    if (p1["x"] != nil && p1["y"] != nil && p2["x"] != nil && p2["y"] != nil) {
+        result["x"] = p1["x"]! + p2["x"]!;
+        result["y"] = p1["y"]! + p2["y"]!;
+    }
+    return result
+}
+
+func subtract(p1 : [String : Int], p2 : [String : Int]) -> [String : Int]? {
+    var result = [
+        "x" : Int(),
+        "y" : Int()
+    ]
+    result["x"] = p1["x"]! - p2["x"]!;
+    result["y"] = p1["y"]! - p2["y"]!;
+    return result
+}
+
+// Doubles
+
+func add(p1 : [String : Double], p2 : [String : Double]) -> [String : Double]? {
+    var result = [
+        "x" : Double(),
+        "y" : Double()
+    ]
+    result["x"] = p1["x"]! + p2["x"]!;
+    result["y"] = p1["y"]! + p2["y"]!;
+    return result
+}
+
+func subtract(p1 : [String : Double], p2 : [String : Double]) -> [String : Double]? {
+    var result = [
+        "x" : Double(),
+        "y" : Double()
+    ]
+    result["x"] = p1["x"]! - p2["x"]!;
+    result["y"] = p1["y"]! - p2["y"]!;
+    return result
+}
